@@ -22,30 +22,36 @@ body {
   justify-content: center;
   border-radius: 50%;
   background: #724ae8;
+  transition: all 0.2s ease;
+} 
+.show-chatbot .chatbot-toggler {
+  transform: rotate(90deg);
 }
-.chatbot-toggler span {
+.chatbot-toggler svg {
   position: absolute;
 }
-.show-chatbot .chatbot-toggler span:first-child,
-.chatbot-toggler span:last-child {
+.show-chatbot .chatbot-toggler svg:first-child,
+.chatbot-toggler svg:last-child {
   opacity: 0;
 }
-.show-chatbot .chatbot-toggler span:last-child {
+.show-chatbot .chatbot-toggler svg:last-child {
   opacity: 1;
 }
 .chatbot {
   position: fixed;
   right: 35px;
   bottom: 90px;
-  width: 420px;
+  width: 380px;
   transform: scale(0.5);
   opacity: 0;
   pointer-events: none;
   overflow: hidden;
   background: #fff;
   border-radius: 15px;
+  transform-origin: bottom right;
   box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
     0 32px 64px -48px rgba(0, 0, 0, 0.5);
+  transition: all 0.1s ease;
 }
 .show-chatbot .chatbot {
   transform: scale(1);
@@ -69,7 +75,7 @@ body {
 .chatbot .chat {
   display: flex;
 }
-.chatbot .incoming span {
+.chatbot .incoming svg {
   height: 32px;
   width: 32px;
   color: #fff;
@@ -87,6 +93,7 @@ body {
 .chatbot .chat p {
   color: #fff;
   max-width: 75%;
+  white-space: pre-wrap;
   font-size: 0.95rem;
   padding: 12px 16px;
   border-radius: 10px 10px 0 10px;
@@ -118,29 +125,29 @@ body {
   padding: 15px 15px 15px 0;
   font-size: 0.95rem;
 }
-.chat-input span {
+.chat-input svg {
   align-self: flex-end;
-  color: #724ae8;
   cursor: pointer;
-  height: 55px;
+  height: 30px;
   display: flex;
   align-items: center;
   visibility: hidden;
+  margin-bottom: 15px;
   font-size: 1.35rem;
 }
-.chat-input textarea:valid ~ span {
+.chat-input textarea:valid ~ svg {
   visibility: visible;
 }
 
 @media (max-width: 490px) {
-    .chatbot {
-        right: 0;
-        bottom: 0;
-        height: 100%;
-        border-radius: 0;
-        width: 100%;
-      }
-      .chatbot .chatbox {
-        height: 90%;
-      }
+  .chatbot {
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    border-radius: 0;
+    width: 100%;
+  }
+  .chatbot .chatbox {
+    height: 90%;
+  }
 }
