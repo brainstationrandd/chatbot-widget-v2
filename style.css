@@ -148,3 +148,22 @@ body {
     height: 90%;
   }
 }
+
+.loading__message {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: 1.25rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  overflow-wrap: break-word;
+  background: transparent;
+  max-width: 80%;
+}
+
+.chat__title_p {
+  max-width: 95%;
+  margin-top: 10px;
+}
