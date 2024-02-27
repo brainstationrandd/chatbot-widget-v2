@@ -3,9 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
   introductoryMessage.classList.add("chat", "incoming");
   introductoryMessage.innerHTML = `
       <div class="message" style>
-        <img src="./nikles-image.png" style="width: 60%; display: block; margin: 30px auto " alt="logo">
+        <img src="./nikles-image.png" style="width: 60%; display: block; margin: 40px auto " alt="logo">
         <h3 class="chat__title" style="color: #302F2E; display: block; margin: 5px auto 0;  text-align: center;">Welcome to Nikles Chat Bot</h3>
-        <p class="chat__title" style="background-color: #fff; color: #585979; display: block; margin: 0 auto 5px;  text-align: center;">This chatbot operates based on the information provided within the supplied PDF document.</p>
+        <p class="chat__title" style="background-color: #fff; color: #585979; display: block; margin: 20px auto 5px;  text-align: center; padding: 6px 10px;">Please ask anything about the company and products.</p>
       </div>
     `;
   const chatbox = document.querySelector(".chatbox");
