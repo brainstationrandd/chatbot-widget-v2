@@ -34,11 +34,12 @@ const createChatLi = (message, className) => {
 };
 
 const generateResponse = async (callback) => {
-  const API_URL = "https://maruboshi-va-ml.sense-23.com/voice_ask_ariya";
+  const API_URL = "https://nikles-ml-service.sense-23.com/chatfromlocalpdf";
   const requestBody = {
     question: userMessage,
     num_results: 1,
   };
+  console.log(userMessage);
   const requestOptions = {
     method: "POST",
     headers: {
