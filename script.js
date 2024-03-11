@@ -42,7 +42,7 @@ const generateResponse = async (callback) => {
   const API_URL = "https://nikles-ml-service.sense-23.com/chatfromlocalpdf";
   const requestBody = {
     question: userMessage,
-    num_results: 1,
+    session_id: session_id,
   };
   const requestOptions = {
     method: "POST",
