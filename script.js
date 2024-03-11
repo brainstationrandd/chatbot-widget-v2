@@ -1,16 +1,17 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const introductoryMessage = document.createElement("li");
-  introductoryMessage.classList.add("chat", "incoming");
-  introductoryMessage.innerHTML = `
-      <div class="message" style>
-        <img src="./nikles-image.png" style="width: 60%; display: block; margin: 40px auto " alt="logo">
-        <h3 class="chat__title" style="color: #302F2E; display: block; margin: 5px auto 0;  text-align: center;">Welcome to Nikles Chat Bot</h3>
-        <p class="chat__title" style="background-color: #fff; color: #585979; display: block; margin: 20px auto 5px;  text-align: center; padding: 6px 10px;">Please ask anything about the company and products.</p>
-      </div>
-    `;
-  const chatbox = document.querySelector(".chatbox");
-  chatbox.appendChild(introductoryMessage);
-});
+let session_id = null;
+// document.addEventListener("DOMContentLoaded", function () {
+//   const introductoryMessage = document.createElement("li");
+//   introductoryMessage.classList.add("chat", "incoming");
+//   introductoryMessage.innerHTML = `
+//       <div class="message" style>
+//         <img src="./nikles-image.png" style="width: 60%; display: block; margin: 40px auto " alt="logo">
+//         <h3 class="chat__title" style="color: #302F2E; display: block; margin: 5px auto 0;  text-align: center;">Welcome to Nikles Chat Bot</h3>
+//         <p class="chat__title" style="background-color: #fff; color: #585979; display: block; margin: 20px auto 5px;  text-align: center; padding: 6px 10px;">Please ask anything about the company and products.</p>
+//       </div>
+//     `;
+//   const chatbox = document.querySelector(".chatbox");
+//   chatbox.appendChild(introductoryMessage);
+// });
 
 const chatInput = document.querySelector(".chat-input input");
 const sendChatBtn = document.getElementById("send-btn");
@@ -23,6 +24,10 @@ const createChatLi = (message, className) => {
   chatLi.classList.add("chat", className);
   if (className === "outgoing") {
     chatLi.innerHTML = `<p>${message}</p>`;
+    if(session_id==null){
+      session_id = crypto.randomUUID();
+    }
+    console.log(session_id)
   } else {
     chatLi.innerHTML = `
       <svg width="10px" height="10px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -39,7 +44,6 @@ const generateResponse = async (callback) => {
     question: userMessage,
     num_results: 1,
   };
-  console.log(userMessage);
   const requestOptions = {
     method: "POST",
     headers: {
@@ -69,14 +73,7 @@ const generateResponse = async (callback) => {
       .replace(/^"/, "")
       .replace(/"$/, "")
       .replace(/\\u/g, "");
-    // .replace(/\\n\\n/g, " ");
-    // .replace(/\\n/g, "\n")
-    // .replace("/n", " ");
     chatMessage += chunkData;
-
-    // const test = document.getElementById("siam");
-    // test.innerHTML = chatMessage;
-
     callback(chatMessage);
   }
 };
@@ -102,8 +99,6 @@ const handleChat = async (event) => {
 
   // Call generateResponse and pass a callback function to handle the received data
   generateResponse((chunk) => {
-    // chatLi.innerHTML = chunk;
-    // console.log(chunk.replace(/\n/g, " "));
     chatLi.querySelector("p").innerText = chunk
       .replace(/\n/g, "")
       .replace(/\n\n/g, "");
@@ -127,6 +122,40 @@ chatInput.addEventListener("keydown", function (e) {
   }
 });
 
-chatbotToggle.addEventListener("click", () =>
-  document.body.classList.toggle("show-chatbot")
-);
+chatbotToggle.addEventListener("click", () => {
+  const chatbot = document.querySelector(".chatbot");
+  const chatbox = document.querySelector(".chatbox");
+
+  if (document.body.classList.contains("show-chatbot")) {
+    session_id = null;
+    chatbox.innerHTML = '';
+    document.body.classList.remove("show-chatbot");
+  } else {
+    document.body.classList.add("show-chatbot");
+
+    const messages = chatbox.querySelectorAll(".chat");
+    if (messages.length === 0) {
+      // If no messages, add introductory message
+      const introductoryMessage = document.createElement("li");
+      introductoryMessage.classList.add("chat", "incoming");
+      introductoryMessage.innerHTML = `
+          <div class="message">
+            <img src="./nikles-image.png" style="width: 60%; display: block; margin: 40px auto " alt="logo">
+            <h3 class="chat__title" style="color: #302F2E; display: block; margin: 5px auto 0;  text-align: center;">Welcome to Nikles Chat Bot</h3>
+            <p class="chat__title" style="background-color: #fff; color: #585979; display: block; margin: 20px auto 5px;  text-align: center; padding: 6px 10px;">Please ask anything about the company and products.</p>
+          </div>
+        `;
+      chatbox.appendChild(introductoryMessage);
+    }
+  }
+});
+
+
+
+// chatbotToggle.addEventListener("click", () =>{
+//     document.body.classList.toggle("show-chatbot");
+//     if(session_id != null){
+//       session_id = null;
+//     }
+//   }
+// );
