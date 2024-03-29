@@ -39,7 +39,7 @@ const createChatLi = (message, className) => {
 };
 
 const generateResponse = async (callback) => {
-  const API_URL = "https://nikles-ml-service.sense-23.com/chatfromlocalpdf";
+  const API_URL = "https://nikles-ml-service.sense-23.com/chat";
   const requestBody = {
     question: userMessage,
     session_id: session_id,
