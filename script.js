@@ -24,18 +24,20 @@ const createChatLi = (message, className) => {
   chatLi.classList.add("chat", className);
   if (className === "outgoing") {
     chatLi.innerHTML = `<p>${message}</p>`;
-    if(session_id==null){
+    if (session_id == null) {
       session_id = crypto.randomUUID();
     }
-    console.log(session_id)
-  }
-
-   else {
+    // console.log(session_id);
+  } else {
     chatLi.innerHTML = `
-      <svg width="10px" height="10px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M14 8C15.1046 8 16 8.89543 16 10V14C16 15.1046 15.1046 16 14 16H10C8.89543 16 8 15.1046 8 14V10C8 8.89543 8.89543 8 10 8H14ZM13 10C13.5523 10 14 10.4477 14 11V13C14 13.5523 13.5523 14 13 14H11C10.4477 14 10 13.5523 10 13V11C10 10.4477 10.4477 10 11 10H13Z" fill="#0F0F0F"/>
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M11 2C11 1.44772 11.4477 1 12 1C12.5523 1 13 1.44772 13 2V4H15V2C15 1.44772 15.4477 1 16 1C16.5523 1 17 1.44772 17 2V4C18.6569 4 20 5.34315 20 7H22C22.5523 7 23 7.44771 23 8C23 8.55229 22.5523 9 22 9H20V11H22C22.5523 11 23 11.4477 23 12C23 12.5523 22.5523 13 22 13H20V15H22C22.5523 15 23 15.4477 23 16C23 16.5523 22.5523 17 22 17H20C20 18.6569 18.6569 20 17 20V22C17 22.5523 16.5523 23 16 23C15.4477 23 15 22.5523 15 22V20H13V22C13 22.5523 12.5523 23 12 23C11.4477 23 11 22.5523 11 22V20H9V22C9 22.5523 8.55229 23 8 23C7.44771 23 7 22.5523 7 22V20C5.34315 20 4 18.6569 4 17H2C1.44772 17 1 16.5523 1 16C1 15.4477 1.44772 15 2 15H4V13H2C1.44772 13 1 12.5523 1 12C1 11.4477 1.44772 11 2 11H4V9H2C1.44772 9 1 8.55229 1 8C1 7.44771 1.44772 7 2 7H4C4 5.34315 5.34315 4 7 4V2C7 1.44772 7.44771 1 8 1C8.55229 1 9 1.44772 9 2V4H11V2ZM17 6C17.5523 6 18 6.44772 18 7V17C18 17.5523 17.5523 18 17 18H7C6.44771 18 6 17.5523 6 17V7C6 6.44771 6.44772 6 7 6H17Z" fill="#5F5A5A"/>
-      </svg><p id="generating_message"><span>Generating...</span></p>`;
+      <div style="
+      display: flex;
+      
+  ">  <svg  width="10px" height="10px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M14 8C15.1046 8 16 8.89543 16 10V14C16 15.1046 15.1046 16 14 16H10C8.89543 16 8 15.1046 8 14V10C8 8.89543 8.89543 8 10 8H14ZM13 10C13.5523 10 14 10.4477 14 11V13C14 13.5523 13.5523 14 13 14H11C10.4477 14 10 13.5523 10 13V11C10 10.4477 10.4477 10 11 10H13Z" fill="#0F0F0F"/>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M11 2C11 1.44772 11.4477 1 12 1C12.5523 1 13 1.44772 13 2V4H15V2C15 1.44772 15.4477 1 16 1C16.5523 1 17 1.44772 17 2V4C18.6569 4 20 5.34315 20 7H22C22.5523 7 23 7.44771 23 8C23 8.55229 22.5523 9 22 9H20V11H22C22.5523 11 23 11.4477 23 12C23 12.5523 22.5523 13 22 13H20V15H22C22.5523 15 23 15.4477 23 16C23 16.5523 22.5523 17 22 17H20C20 18.6569 18.6569 20 17 20V22C17 22.5523 16.5523 23 16 23C15.4477 23 15 22.5523 15 22V20H13V22C13 22.5523 12.5523 23 12 23C11.4477 23 11 22.5523 11 22V20H9V22C9 22.5523 8.55229 23 8 23C7.44771 23 7 22.5523 7 22V20C5.34315 20 4 18.6569 4 17H2C1.44772 17 1 16.5523 1 16C1 15.4477 1.44772 15 2 15H4V13H2C1.44772 13 1 12.5523 1 12C1 11.4477 1.44772 11 2 11H4V9H2C1.44772 9 1 8.55229 1 8C1 7.44771 1.44772 7 2 7H4C4 5.34315 5.34315 4 7 4V2C7 1.44772 7.44771 1 8 1C8.55229 1 9 1.44772 9 2V4H11V2ZM17 6C17.5523 6 18 6.44772 18 7V17C18 17.5523 17.5523 18 17 18H7C6.44771 18 6 17.5523 6 17V7C6 6.44771 6.44772 6 7 6H17Z" fill="#5F5A5A"/>
+</svg><p ><span>Generating...</span></p></div>`;
+    chatLi.classList.add("generating_message");
   }
   return chatLi;
 };
@@ -55,10 +57,10 @@ const generateResponse = async (callback) => {
     body: JSON.stringify(requestBody),
   };
   const response = await fetch(API_URL, requestOptions);
-  const contentType = response.headers.get('Content-Type');
-  if (contentType && contentType.includes('application/json')) {
-    const responseData = await response.json(); 
-    callback(responseData); 
+  const contentType = response.headers.get("Content-Type");
+  if (contentType && contentType.includes("application/json")) {
+    const responseData = await response.json();
+    callback(responseData);
   } else {
     const reader = response.body.getReader();
     const decoder = new TextDecoder();
@@ -84,31 +86,50 @@ const generateResponse = async (callback) => {
 };
 
 const handleJsonResponse = (jsonData) => {
-  const { image_url, name, code, description,url } = jsonData[0];
+  const { image_url, name, code, description, url } = jsonData[0];
   const cardContainer = document.createElement("div");
   cardContainer.classList.add("card");
 
   cardContainer.innerHTML = `
-    <div id="card">
+  <div style="display: flex;">
+  <svg width="10px" height="10px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M14 8C15.1046 8 16 8.89543 16 10V14C16 15.1046 15.1046 16 14 16H10C8.89543 16 8 15.1046 8 14V10C8 8.89543 8.89543 8 10 8H14ZM13 10C13.5523 10 14 10.4477 14 11V13C14 13.5523 13.5523 14 13 14H11C10.4477 14 10 13.5523 10 13V11C10 10.4477 10.4477 10 11 10H13Z" fill="#0F0F0F"/>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M11 2C11 1.44772 11.4477 1 12 1C12.5523 1 13 1.44772 13 2V4H15V2C15 1.44772 15.4477 1 16 1C16.5523 1 17 1.44772 17 2V4C18.6569 4 20 5.34315 20 7H22C22.5523 7 23 7.44771 23 8C23 8.55229 22.5523 9 22 9H20V11H22C22.5523 11 23 11.4477 23 12C23 12.5523 22.5523 13 22 13H20V15H22C22.5523 15 23 15.4477 23 16C23 16.5523 22.5523 17 22 17H20C20 18.6569 18.6569 20 17 20V22C17 22.5523 16.5523 23 16 23C15.4477 23 15 22.5523 15 22V20H13V22C13 22.5523 12.5523 23 12 23C11.4477 23 11 22.5523 11 22V20H9V22C9 22.5523 8.55229 23 8 23C7.44771 23 7 22.5523 7 22V20C5.34315 20 4 18.6569 4 17H2C1.44772 17 1 16.5523 1 16C1 15.4477 1.44772 15 2 15H4V13H2C1.44772 13 1 12.5523 1 12C1 11.4477 1.44772 11 2 11H4V9H2C1.44772 9 1 8.55229 1 8C1 7.44771 1.44772 7 2 7H4C4 5.34315 5.34315 4 7 4V2C7 1.44772 7.44771 1 8 1C8.55229 1 9 1.44772 9 2V4H11V2ZM17 6C17.5523 6 18 6.44772 18 7V17C18 17.5523 17.5523 18 17 18H7C6.44771 18 6 17.5523 6 17V7C6 6.44771 6.44772 6 7 6H17Z" fill="#5F5A5A"/>
+</svg>
+    <div>
+    ${jsonData?.map((data) => {
+      return `<div id="card">
       <div id="card_body">
         <div id="card_img">
-          <img id="product_img" src="${image_url}" alt="image">
+          <img id="product_img" src="${data.image_url}" alt="image" />
         </div>
         <div id="card_text">
           <div>
-            <b>${name}</b><br>
-            ${code}
+            <b>${data.name}</b><br>
+            ${data.code}
           </div>
           <div style="margin-top: 10px">
-            ${description}
+            ${data.description}
           </div>
         </div>
       </div>
-    </div>
+    </div>`;
+    })}
+    
   `;
-document.getElementById('generating_message').style.display='none';
-  const chatLi = createChatLi("", "incoming");
+  // chatLi.querySelector("p").innerText = "";
+  // const chatLi = createChatLi("", "incoming");
+  // chatLi.appendChild(cardContainer);
+  // chatbox.appendChild(chatLi);
+
+  document.querySelector(".generating_message").style.display = "none";
+
+  const chatLi = document.createElement("li");
+  chatLi.classList.add("chat", "incoming");
   chatLi.appendChild(cardContainer);
+  if (session_id == null) {
+    session_id = crypto.randomUUID();
+  }
   chatbox.appendChild(chatLi);
   chatbox.scrollTo(0, chatbox.scrollHeight);
 };
@@ -139,12 +160,11 @@ const handleChat = async (event) => {
     // responseData=JSON.parse(responseData);
     // console.log(responseData);
     if (isStringArray(responseData)) {
-      console.log('handleChat-if');
-      responseData=JSON.parse(responseData);
+      console.log("handleChat-if");
+      responseData = JSON.parse(responseData);
       handleJsonResponse(responseData);
-    }
-    else {
-      console.log('handleChat-else');
+    } else {
+      console.log("handleChat-else");
       chatLi.querySelector("p").innerText = responseData
         .replace(/\n/g, "")
         .replace(/\n\n/g, "");
@@ -175,7 +195,7 @@ chatbotToggle.addEventListener("click", () => {
 
   if (document.body.classList.contains("show-chatbot")) {
     session_id = null;
-    chatbox.innerHTML = '';
+    chatbox.innerHTML = "";
     document.body.classList.remove("show-chatbot");
   } else {
     document.body.classList.add("show-chatbot");
@@ -196,8 +216,6 @@ chatbotToggle.addEventListener("click", () => {
     }
   }
 });
-
-
 
 // chatbotToggle.addEventListener("click", () =>{
 //     document.body.classList.toggle("show-chatbot");
