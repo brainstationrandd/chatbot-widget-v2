@@ -7,6 +7,7 @@
 }
 body {
   background: #e3f2fd;
+  word-wrap: break-word
 }
 .chatbot-toggler {
   position: fixed;
