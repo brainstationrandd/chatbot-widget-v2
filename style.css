@@ -167,3 +167,41 @@ body {
   max-width: 95%;
   margin-top: 10px;
 }
+
+#card {
+  padding: 0 24px;
+  color: #dfcaca; 
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#card_body {
+  background: #eeeded;
+  height: 300px;
+  width: 250px;
+  overflow: hidden;
+}
+#card_img {
+  height: 45%;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  background: #b8b4b4;
+  margin: 10px 10px 0px 10px;
+  border-radius: 10px 10px 0px 0px;
+}
+#product_img {
+  width: auto;
+  height: 100%;
+}
+#card_text {
+  color: black;
+  margin: 0px 10px 10px 10px;
+  background: #ffffff;
+  padding-left: 10px;
+  padding-right: 10px;
+  overflow: hidden;
+  height: 48%;
+  border-radius: 0px 0px 10px 10px;
+}
