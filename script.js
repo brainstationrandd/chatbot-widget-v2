@@ -89,6 +89,7 @@ const handleJsonResponse = (jsonData) => {
   const { image_url, name, code, description, url } = jsonData[0];
   const cardContainer = document.createElement("div");
   cardContainer.classList.add("card");
+  console.log(jsonData);
 
   cardContainer.innerHTML = `
   <div style="display: flex;">
@@ -122,7 +123,13 @@ const handleJsonResponse = (jsonData) => {
   // chatLi.appendChild(cardContainer);
   // chatbox.appendChild(chatLi);
 
-  document.querySelector(".generating_message").style.display = "none";
+  // document.querySelector(".generating_message").style.display = "none";
+
+  var lastElement = document.querySelector(".generating_message:last-child");
+  lastElement.style.display = "none";
+
+  // Removing the last element with class 'generating_message' from the DOM
+  lastElement.parentNode.removeChild(lastElement);
 
   const chatLi = document.createElement("li");
   chatLi.classList.add("chat", "incoming");

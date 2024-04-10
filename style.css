@@ -112,7 +112,7 @@ body {
   display: flex;
   gap: 5px;
   background: #fff;
-  padding: 5px 20px;
+  /* padding: 5px 20px; */
   border-top: 1px solid #ccc;
 }
 
@@ -123,7 +123,7 @@ body {
   outline: none;
   resize: none;
   max-height: 180px;
-  padding: 15px 15px 15px 0;
+  padding: 15px;
   font-size: 0.95rem;
 }
 .chat-input svg {
@@ -178,11 +178,13 @@ body {
 }
 #card_body {
   background: #eeeded;
-  height: 300px;
+  border-radius: 10px;
+  /* height: 300px; */
   width: 250px;
   overflow: hidden;
 }
 #card_img {
+  min-height: 120px;
   height: 45%;
   display: flex;
   justify-content: center;
