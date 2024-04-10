@@ -89,7 +89,7 @@ const handleJsonResponse = (jsonData) => {
   const { image_url, name, code, description, url } = jsonData[0];
   const cardContainer = document.createElement("div");
   cardContainer.classList.add("card");
-  console.log(jsonData);
+  // console.log(jsonData);
 
   cardContainer.innerHTML = `
   <div style="display: flex;">
