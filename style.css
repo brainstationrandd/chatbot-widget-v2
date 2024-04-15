@@ -180,7 +180,7 @@ body {
 #card_body {
   background: #eeeded;
   border-radius: 10px;
-  /* height: 300px; */
+  height: 300px;
   width: 250px;
   overflow: hidden;
 }
@@ -193,10 +193,11 @@ body {
   background: #b8b4b4;
   margin: 10px 10px 0px 10px;
   border-radius: 10px 10px 0px 0px;
+  overflow: hidden;
 }
 #product_img {
-  width: auto;
-  height: 100%;
+  max-width: auto;
+  max-height: 100%;
 }
 #card_text {
   color: black;
