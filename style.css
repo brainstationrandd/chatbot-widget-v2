@@ -180,13 +180,13 @@ body {
 #card_body {
   background: #eeeded;
   border-radius: 10px;
-  height: 300px;
+  height: auto;
   width: 250px;
   overflow: hidden;
 }
 #card_img {
   min-height: 120px;
-  height: 45%;
+  height: 135px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -206,6 +206,6 @@ body {
   padding-left: 10px;
   padding-right: 10px;
   overflow: hidden;
-  height: 48%;
+  height: auto;
   border-radius: 0px 0px 10px 10px;
 }
