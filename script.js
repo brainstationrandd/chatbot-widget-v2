@@ -27,7 +27,6 @@ const createChatLi = (message, className) => {
     if (session_id == null) {
       session_id = crypto.randomUUID();
     }
-    // console.log(session_id);
   } else {
     chatLi.innerHTML = `
       <div style="
@@ -89,7 +88,7 @@ const handleJsonResponse = (jsonData) => {
   const { image_url, name, code, description, url } = jsonData[0];
   const cardContainer = document.createElement("div");
   cardContainer.classList.add("card");
-  console.log(jsonData);
+  // console.log(jsonData);
 
   cardContainer.innerHTML = `
   <div style="display: flex;">
@@ -167,11 +166,9 @@ const handleChat = async (event) => {
     // responseData=JSON.parse(responseData);
     // console.log(responseData);
     if (isStringArray(responseData)) {
-      console.log("handleChat-if");
       responseData = JSON.parse(responseData);
       handleJsonResponse(responseData);
     } else {
-      console.log("handleChat-else");
       chatLi.querySelector("p").innerText = responseData
         .replace(/\n/g, "")
         .replace(/\n\n/g, "");
