@@ -85,7 +85,7 @@ const generateResponse = async (callback) => {
 };
 
 const handleJsonResponse = (jsonData) => {
-  const { image_url, name, code, description, url } = jsonData[0];
+  // const { image_url, name, code, description, url } = jsonData[0];
   const cardContainer = document.createElement("div");
   cardContainer.classList.add("card");
   // console.log(jsonData);
@@ -162,6 +162,12 @@ const handleChat = async (event) => {
   function isStringArray(str) {
     return /^\[.*\]$/.test(str);
   }
+
+  const replaceURLsWithLinks = (text) => {
+  // Regular expression to match URLs
+  const urlRegex = /(?:https?|ftp):\/\/[\n\S]+/g;
+  return text.replace(urlRegex, (url) => `<a href="${url}" target="_blank">${url}</a>`);
+};
   generateResponse((responseData) => {
     // responseData=JSON.parse(responseData);
     // console.log(responseData);
@@ -169,9 +175,9 @@ const handleChat = async (event) => {
       responseData = JSON.parse(responseData);
       handleJsonResponse(responseData);
     } else {
-      chatLi.querySelector("p").innerText = responseData
+      chatLi.querySelector("p").innerHTML = replaceURLsWithLinks(responseData
         .replace(/\n/g, "")
-        .replace(/\n\n/g, "");
+        .replace(/\n\n/g, ""));
       chatbox.scrollTo(0, chatbox.scrollHeight);
     }
   });
