@@ -164,17 +164,16 @@ const handleChat = async (event) => {
   }
 
   const replaceURLsWithLinks = (text) => {
-  // Regular expression to match URLs
-  const urlRegex = /(?:https?|ftp):\/\/[\n\S]+/g;
-  return text.replace(urlRegex, (url) => `<a href="${url}" target="_blank">${url}</a>`);
-};
+    // Regular expression to match URLs
+    const urlRegex = /(?:https?|ftp):\/\/[\n\S]+/g;
+    return text.replace(urlRegex, (url) => `<a href="${url}" target="_blank">${url}</a>`);
+  };
   generateResponse((responseData) => {
-    // responseData=JSON.parse(responseData);
-    // console.log(responseData);
     if (isStringArray(responseData)) {
       responseData = JSON.parse(responseData);
       handleJsonResponse(responseData);
     } else {
+      responseData = responseData.replace(/\\n/g, "<br>");
       chatLi.querySelector("p").innerHTML = replaceURLsWithLinks(responseData
         .replace(/\n/g, "")
         .replace(/\n\n/g, ""));
