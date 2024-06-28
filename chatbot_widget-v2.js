@@ -1,5 +1,4 @@
-document.body.innerHTML +=
-` <button class="chatbot-toggler">
+document.body.innerHTML += ` <button class="chatbot-toggler">
 <svg
 style="padding: 4px;"
   width="40px"
@@ -68,10 +67,10 @@ style="padding: 4px;"
     </svg>
   </form>
 </div>
-</div>`
+</div>`;
 
 const style = document.createElement("style");
-style.innerHTML =`@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+style.innerHTML = `@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -282,5 +281,5 @@ body {
   height: auto;
   border-radius: 0px 0px 10px 10px;
 }
-`
+`;
 document.head.appendChild(style);

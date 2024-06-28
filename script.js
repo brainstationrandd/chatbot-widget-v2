@@ -164,19 +164,33 @@ const handleChat = async (event) => {
   }
 
   const replaceURLsWithLinks = (text) => {
-    // Regular expression to match URLs
-    const urlRegex = /(?:https?|ftp):\/\/[\n\S]+/g;
-    return text.replace(urlRegex, (url) => `<a href="${url}" target="_blank">${url}</a>`);
+    // Regular expression to match URLs and email addresses
+    const urlAndEmailRegex =
+      /(?:https?|ftp):\/\/[\n\S]+|\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;
+    return text.replace(urlAndEmailRegex, (match) => {
+      // Check if the match is an email address
+      if (match.includes("@")) {
+        // If it's an email, format with mailto:
+        return `<a href="mailto:${match}">${match}</a>`;
+      } else {
+        // If it's a URL, format as usual
+        return `<a href="${match}" target="_blank">${match}</a>`;
+      }
+    });
   };
+
   generateResponse((responseData) => {
     if (isStringArray(responseData)) {
       responseData = JSON.parse(responseData);
       handleJsonResponse(responseData);
     } else {
       responseData = responseData.replace(/\\n/g, "<br>");
-      chatLi.querySelector("p").innerHTML = replaceURLsWithLinks(responseData
-        .replace(/\n/g, "")
-        .replace(/\n\n/g, ""));
+      chatLi.querySelector("p").style.maxWidth = "65%";
+      chatLi.querySelector("p").innerHTML = replaceURLsWithLinks(
+        responseData.replace(/\n/g, "").replace(/\n\n/g, "")
+      );
+      // style="word-break: 'break-word'; overflow: 'hidden'; textOverflow: 'ellipsis';"
+
       chatbox.scrollTo(0, chatbox.scrollHeight);
     }
   });
