@@ -189,6 +189,7 @@ style.innerHTML = `@import url("https://fonts.googleapis.com/css2?family=Poppins
   max-height: 180px;
   padding: 15px;
   font-size: 0.95rem;
+  background: #fff;
 }
 .chat-input svg {
   align-self: flex-end;
@@ -507,7 +508,7 @@ chatbotToggle.addEventListener("click", () => {
       introductoryMessage.classList.add("chat", "incoming");
       introductoryMessage.innerHTML = `
           <div class="message">
-            <img src="./nikles-image.png" style="width: 60%; display: block; margin: 40px auto " alt="logo">
+            <img src="https://raw.githubusercontent.com/brainstationrandd/chatbot-widget-v2/main/nikles-image.png" style="width: 60%; display: block; margin: 40px auto " alt="logo">
             <h3 class="chat__title" style="color: #302F2E; display: block; margin: 5px auto 0;  text-align: center;">Welcome to Nikles Chat Bot</h3>
             <p class="chat__title" style="background-color: #fff; color: #585979; display: block; margin: 20px auto 5px;  text-align: center; padding: 6px 10px;">Please ask anything about the company and products.</p>
           </div>
