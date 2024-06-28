@@ -77,7 +77,8 @@ style.innerHTML = `@import url("https://fonts.googleapis.com/css2?family=Poppins
   box-sizing: border-box;
 }
 body {
-  word-wrap: break-word
+  word-wrap: break-word;
+  font: inherit;
 }
 .chatbot-toggler {
   position: fixed;
