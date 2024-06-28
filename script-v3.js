@@ -71,16 +71,7 @@ style="padding: 4px;"
 
 const style = document.createElement("style");
 style.innerHTML = `@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
-body {
-  background: #e3f2fd;
-  word-wrap: break-word
-}
+
 .chatbot-toggler {
   position: fixed;
   bottom: 30px;
